@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnm0gyvqhxihe"]
+
+[ext_resource type="Script" path="res://scripts/player_team.gd" id="1_0yh88"]
+[ext_resource type="PackedScene" uid="uid://bnbgqt6bx7mf6" path="res://scenes/test_player.tscn" id="1_270gj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ju3rd"]
+
+[node name="PlayerTeam" type="Area2D"]
+script = ExtResource("1_0yh88")
+
+[node name="SpawningShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ju3rd")
+
+[node name="SpawnPoint-1" type="Node2D" parent="SpawningShape"]
+
+[node name="TestPlayer" parent="SpawningShape/SpawnPoint-1" instance=ExtResource("1_270gj")]
+
+[node name="SpawnPoint-2" type="Node2D" parent="SpawningShape"]
+position = Vector2(10, 0)
+
+[node name="TestPlayer" parent="SpawningShape/SpawnPoint-2" instance=ExtResource("1_270gj")]
+
+[node name="SpawnPoint-3" type="Node2D" parent="SpawningShape"]
+position = Vector2(0, 10)
+
+[node name="TestPlayer" parent="SpawningShape/SpawnPoint-3" instance=ExtResource("1_270gj")]
+
+[node name="SpawnPoint-4" type="Node2D" parent="SpawningShape"]
+position = Vector2(-10, 0)
+
+[node name="TestPlayer" parent="SpawningShape/SpawnPoint-4" instance=ExtResource("1_270gj")]
+
+[node name="SpawnPoint-5" type="Node2D" parent="SpawningShape"]
+position = Vector2(0, -10)
+
+[node name="TestPlayer" parent="SpawningShape/SpawnPoint-5" instance=ExtResource("1_270gj")]
