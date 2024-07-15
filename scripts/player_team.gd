@@ -1,9 +1,12 @@
-extends Area2D
+class_name PlayerTeam extends Area2D
 
 @export var spawn_points: Array[Node2D]
 @onready var spawning_shape = %SpawningShape
 
 var members: Dictionary = {}
+
+func get_members() -> Dictionary:
+	return members.duplicate()
 
 func add_member(member: TeamMember):
 	if members.size() < spawn_points.size():
