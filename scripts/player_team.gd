@@ -16,16 +16,32 @@ func remove_member_by_index(index: int) -> bool:
 	return members.erase(index)
 
 func remove_member(member: TeamMember):
-	if members.has(member):
-		var index = members.find_key(member)
+	var index = members.find_key(member)
+	if index != null:
 		remove_member_by_index(index)
 
 func create_test_team():
-	var p1 = %"TestPlayer-1"
-	var p2 = %"TestPlayer-2"
-	var p3 = %"TestPlayer-3"
-	var p4 = %"TestPlayer-4"
-	var p5 = %"TestPlayer-5"
+	const TEST_PLAYER = preload("res://scenes/team_member.tscn")
+	var p1 = TEST_PLAYER.instantiate()
+	p1.global_position = spawn_points[0].global_position
+	p1.connect("member_died", on_member_death)
+	add_child(p1)
+	var p2 = TEST_PLAYER.instantiate()
+	p2.global_position = spawn_points[1].global_position
+	p2.connect("member_died", on_member_death)
+	add_child(p2)
+	var p3 = TEST_PLAYER.instantiate()
+	p3.global_position = spawn_points[2].global_position
+	p3.connect("member_died", on_member_death)
+	add_child(p3)
+	var p4 = TEST_PLAYER.instantiate()
+	p4.global_position = spawn_points[3].global_position
+	p4.connect("member_died", on_member_death)
+	add_child(p4)
+	var p5 = TEST_PLAYER.instantiate()
+	p5.global_position = spawn_points[4].global_position
+	p5.connect("member_died", on_member_death)
+	add_child(p5)
 	
 	add_member(p1)
 	add_member(p2)
@@ -47,3 +63,6 @@ func _physics_process(_delta: float):
 				i += 1
 			else:
 				break
+				
+func on_member_death(member: TeamMember):
+	remove_member(member)
