@@ -18,8 +18,8 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 
-func _on_hitbox_body_entered(body):
-	health_component.take_damage(10)
-
 func _on_health_component_health_depleted():
 	queue_free()
+
+func _on_hitbox_body_entered(body):
+	health_component.take_damage(10)

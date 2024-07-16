@@ -15,7 +15,6 @@ func gain_life(amount: int):
 	
 func take_damage(amount: int):
 	set_health(health - amount)
-	print("You took\t" + str(amount) + "\tdamage! Accura Picciott")
 
 func _ready():
 	health_bar.max_value = health
