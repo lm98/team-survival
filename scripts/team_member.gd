@@ -2,8 +2,8 @@ class_name TeamMember extends CharacterBody2D
 
 signal member_died(member)
 @export var speed: int = 50
-var click_position: Vector2 = global_position
-var target_position: Vector2 = global_position
+@onready var click_position: Vector2 = global_position
+@onready var target_position: Vector2 = global_position
 @onready var health_component = $HealthComponent
 
 func _physics_process(_delta):
