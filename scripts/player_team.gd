@@ -20,34 +20,17 @@ func remove_member(member: TeamMember):
 	if index != null:
 		remove_member_by_index(index)
 
+func spawn_new_member(member_res: Resource, position: Vector2 = Vector2.ZERO):
+	var member = member_res.instantiate()
+	member.global_position = position
+	member.connect("member_died", on_member_death)
+	add_child(member)
+	add_member(member)
+
 func create_test_team():
 	const TEST_PLAYER = preload("res://scenes/team_member.tscn")
-	var p1 = TEST_PLAYER.instantiate()
-	p1.global_position = spawn_points[0].global_position
-	p1.connect("member_died", on_member_death)
-	add_child(p1)
-	var p2 = TEST_PLAYER.instantiate()
-	p2.global_position = spawn_points[1].global_position
-	p2.connect("member_died", on_member_death)
-	add_child(p2)
-	var p3 = TEST_PLAYER.instantiate()
-	p3.global_position = spawn_points[2].global_position
-	p3.connect("member_died", on_member_death)
-	add_child(p3)
-	var p4 = TEST_PLAYER.instantiate()
-	p4.global_position = spawn_points[3].global_position
-	p4.connect("member_died", on_member_death)
-	add_child(p4)
-	var p5 = TEST_PLAYER.instantiate()
-	p5.global_position = spawn_points[4].global_position
-	p5.connect("member_died", on_member_death)
-	add_child(p5)
-	
-	add_member(p1)
-	add_member(p2)
-	add_member(p3)
-	add_member(p4)
-	add_member(p5)
+	for sp in spawn_points:
+		spawn_new_member(TEST_PLAYER, sp.global_position)
 
 func _ready():
 	create_test_team()
