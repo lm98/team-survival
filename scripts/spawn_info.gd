@@ -6,3 +6,4 @@ class_name SpawnInfo extends Resource
 @export var enemy_number: int
 @export var spawn_delay: int
 
+var spawn_delay_counter = 0
