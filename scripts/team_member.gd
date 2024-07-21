@@ -5,10 +5,17 @@ signal member_died(member)
 @onready var click_position: Vector2 = global_position
 @onready var target_position: Vector2 = global_position
 @onready var health_component = $HealthComponent
+@onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(_delta):
 	target_position = (click_position - global_position).normalized()
 	velocity = target_position * speed
+	
+	if velocity.length() > 0.0:
+		animated_sprite.play("move")
+	else:
+		animated_sprite.play("idle")
+	
 	move_and_slide()
 
 func move_to_target(target: Vector2):
