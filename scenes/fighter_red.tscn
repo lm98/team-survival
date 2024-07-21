@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcce2npwnklhf"]
+
+[ext_resource type="Script" path="res://scripts/team_member.gd" id="1_ryqld"]
+[ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_my3r3"]
+[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/health_component.tscn" id="3_uterg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba867"]
+atlas = ExtResource("2_my3r3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13k0f"]
+atlas = ExtResource("2_my3r3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d0g8"]
+atlas = ExtResource("2_my3r3")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqaf4"]
+atlas = ExtResource("2_my3r3")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8jb7"]
+atlas = ExtResource("2_my3r3")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpgfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba867")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13k0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d0g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqaf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8jb7")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv73l"]
+size = Vector2(12, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_32xss"]
+
+[node name="FighterRed" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_ryqld")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jpgfh")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_pv73l")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_uterg")]
+position = Vector2(0, -10)
+health = 30
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_32xss")
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
