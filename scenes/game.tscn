@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg4hkp5e5mkx8"]
+[gd_scene load_steps=6 format=3 uid="uid://cg4hkp5e5mkx8"]
 
 [ext_resource type="PackedScene" uid="uid://dnm0gyvqhxihe" path="res://scenes/player_team.tscn" id="1_n5eul"]
 [ext_resource type="PackedScene" uid="uid://umg8v7j1bp4i" path="res://scenes/enemy.tscn" id="2_60l1a"]
+[ext_resource type="PackedScene" uid="uid://danomup8bjwpg" path="res://scenes/enemy_spawner.tscn" id="3_fpdir"]
+[ext_resource type="Script" path="res://scripts/spawn_info.gd" id="4_k13gr"]
+
+[sub_resource type="Resource" id="Resource_rhfl1"]
+script = ExtResource("4_k13gr")
+time_start = 0
+time_end = 60
+enemy_res = ExtResource("2_60l1a")
+enemy_number = 1
+spawn_delay = 1
 
 [node name="Game" type="Node2D"]
 
 [node name="PlayerTeam" parent="." instance=ExtResource("1_n5eul")]
-position = Vector2(89, 67)
+position = Vector2(539, 318)
 
-[node name="Enemy" parent="." instance=ExtResource("2_60l1a")]
-position = Vector2(472, 421)
+[node name="EnemySpawner" parent="." instance=ExtResource("3_fpdir")]
+spawn_infos = Array[ExtResource("4_k13gr")]([SubResource("Resource_rhfl1")])
+
+[editable path="EnemySpawner"]
