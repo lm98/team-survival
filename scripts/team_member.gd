@@ -1,6 +1,6 @@
 class_name TeamMember extends CharacterBody2D
 
-signal member_died(member)
+signal member_died(member: TeamMember)
 @export var speed: int = 50
 @onready var click_position: Vector2 = global_position
 @onready var target_position: Vector2 = global_position
