@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://guywc3twavcq"]
+
+[ext_resource type="Script" path="res://scripts/team_member.gd" id="1_1abfy"]
+[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/health_component.tscn" id="2_imqb6"]
+[ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_sfwla"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c7gr"]
+atlas = ExtResource("2_sfwla")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5lo0"]
+atlas = ExtResource("2_sfwla")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl5i0"]
+atlas = ExtResource("2_sfwla")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r55h1"]
+atlas = ExtResource("2_sfwla")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl3bm"]
+atlas = ExtResource("2_sfwla")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0a15o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c7gr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5lo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl5i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r55h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl3bm")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vl7d"]
+size = Vector2(12, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enxj6"]
+
+[node name="Knight" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_1abfy")
+speed = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0a15o")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.195528
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5vl7d")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_imqb6")]
+position = Vector2(0, -10)
+health = 50
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_enxj6")
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
