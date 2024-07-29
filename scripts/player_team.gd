@@ -29,8 +29,8 @@ func spawn_new_member(member_res: Resource, position: Vector2 = Vector2.ZERO):
 
 func create_test_team():
 	const member_prefabs = [
-		#preload("res://scenes/fighter_red.tscn"),
-		preload("res://scenes/knight.tscn"),
+		#preload("res://scenes/player/fighter_red.tscn"),
+		preload("res://scenes/player/knight.tscn"),
 	]
 	
 	for sp in spawn_points:
