@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://28x2786l5xit"]
+
+[ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="3_nu0ot"]
+
+[node name="Attack" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource("3_nu0ot")]
+visible = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="Hitbox"]
