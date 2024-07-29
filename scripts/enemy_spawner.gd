@@ -14,7 +14,6 @@ func _on_timer_timeout():
 				si.spawn_delay_counter = 0
 				var count = 0
 				while count < si.enemy_number:
-					print("Spawning Enemy")
 					var enemy = si.enemy_res.instantiate()
 					enemy.global_position = get_random_position()
 					add_child(enemy)
