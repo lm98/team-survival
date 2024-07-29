@@ -1,27 +1,27 @@
 [gd_scene load_steps=12 format=3 uid="uid://dcce2npwnklhf"]
 
-[ext_resource type="Script" path="res://scripts/team_member.gd" id="1_ryqld"]
-[ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_my3r3"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/health_component.tscn" id="3_uterg"]
+[ext_resource type="Script" path="res://scripts/team_member.gd" id="1_ny5y6"]
+[ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_3g72j"]
+[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_qbvlr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ba867"]
-atlas = ExtResource("2_my3r3")
+atlas = ExtResource("2_3g72j")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13k0f"]
-atlas = ExtResource("2_my3r3")
+atlas = ExtResource("2_3g72j")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8d0g8"]
-atlas = ExtResource("2_my3r3")
+atlas = ExtResource("2_3g72j")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqaf4"]
-atlas = ExtResource("2_my3r3")
+atlas = ExtResource("2_3g72j")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8jb7"]
-atlas = ExtResource("2_my3r3")
+atlas = ExtResource("2_3g72j")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jpgfh"]
@@ -59,7 +59,7 @@ size = Vector2(12, 14)
 
 [node name="FighterRed" type="CharacterBody2D"]
 collision_layer = 3
-script = ExtResource("1_ryqld")
+script = ExtResource("1_ny5y6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jpgfh")
@@ -67,16 +67,14 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pv73l")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_uterg")]
+[node name="HealthComponent" parent="." instance=ExtResource("3_qbvlr")]
 position = Vector2(0, -10)
 health = 30
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 

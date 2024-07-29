@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://guywc3twavcq"]
 
 [ext_resource type="Script" path="res://scripts/team_member.gd" id="1_1abfy"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/health_component.tscn" id="2_imqb6"]
+[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="2_imqb6"]
 [ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_sfwla"]
 [ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hitbox.tscn" id="4_avwac"]
 
