@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bspqrsf7x4l"]
 
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="1_jmvoy"]
+[ext_resource type="Script" path="res://scripts/attack/hitbox.gd" id="1_jmvoy"]
 
 [node name="Hitbox" type="Area2D"]
 visible = false

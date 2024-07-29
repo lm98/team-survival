@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://umg8v7j1bp4i"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_yam6n"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_yam6n"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_cptos"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4n6vp"]

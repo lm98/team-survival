@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dnm0gyvqhxihe" path="res://scenes/player/player_team.tscn" id="1_n5eul"]
 [ext_resource type="PackedScene" uid="uid://dox0nvi5tnwm7" path="res://scenes/enemy/skeleton.tscn" id="3_0e35p"]
 [ext_resource type="PackedScene" uid="uid://danomup8bjwpg" path="res://scenes/enemy/enemy_spawner.tscn" id="3_fpdir"]
-[ext_resource type="Script" path="res://scripts/spawn_info.gd" id="4_k13gr"]
+[ext_resource type="Script" path="res://scripts/enemy/spawn_info.gd" id="4_k13gr"]
 [ext_resource type="Texture2D" uid="uid://cfdmy3n0v8n03" path="res://assets/scenery/TilesetFloor.png" id="5_orsff"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt5fv"]
