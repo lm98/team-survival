@@ -28,5 +28,5 @@ func _physics_process(_delta):
 func _on_health_component_health_depleted():
 	queue_free()
 
-func take_damage(amount: float):
+func take_damage(amount):
 	health_component.take_damage(amount)
