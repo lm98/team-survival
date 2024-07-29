@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://dcce2npwnklhf"]
 
-[ext_resource type="Script" path="res://scripts/team_member.gd" id="1_ny5y6"]
+[ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_xvuox"]
 [ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_3g72j"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_qbvlr"]
+[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_c5mrm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ba867"]
 atlas = ExtResource("2_3g72j")
@@ -59,7 +59,7 @@ size = Vector2(12, 14)
 
 [node name="FighterRed" type="CharacterBody2D"]
 collision_layer = 3
-script = ExtResource("1_ny5y6")
+script = ExtResource("1_xvuox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jpgfh")
@@ -70,7 +70,7 @@ autoplay = "idle"
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pv73l")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_qbvlr")]
+[node name="HealthComponent" parent="." instance=ExtResource("3_c5mrm")]
 position = Vector2(0, -10)
 health = 30
 

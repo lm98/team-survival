@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dox0nvi5tnwm7"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_cj0da"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_cj0da"]
 [ext_resource type="Texture2D" uid="uid://coskhxncbsu3w" path="res://assets/sprites/Skeleton.png" id="2_5pmh0"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="2_bhv1t"]
 
