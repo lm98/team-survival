@@ -27,3 +27,10 @@ func _on_health_component_health_depleted():
 
 func _on_hurt_box_body_entered(body):
 	health_component.take_damage(10)
+
+func _on_hitbox_enemy_entered(enemy):
+	print("Attacking enemy")
+	const ATTACK = preload("res://scenes/attack/double_slash.tscn")
+	var attack = ATTACK.instantiate()
+	attack.global_position = enemy.global_position
+	add_child(attack)

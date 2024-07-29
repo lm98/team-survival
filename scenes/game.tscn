@@ -494,4 +494,7 @@ position = Vector2(277, 211)
 [node name="EnemySpawner" parent="." instance=ExtResource("3_fpdir")]
 spawn_infos = Array[ExtResource("4_k13gr")]([SubResource("Resource_rhfl1")])
 
+[node name="Skeleton" parent="." instance=ExtResource("3_0e35p")]
+position = Vector2(309, 179)
+
 [editable path="EnemySpawner"]

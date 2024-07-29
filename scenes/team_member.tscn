@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6nfxj6hr8867"]
+[gd_scene load_steps=5 format=3 uid="uid://b6nfxj6hr8867"]
 
 [ext_resource type="Script" path="res://scripts/team_member.gd" id="1_c6x2y"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/health_component.tscn" id="3_kj3eh"]
+[ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hitbox.tscn" id="3_qqngv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ctp6b"]
 
@@ -23,6 +24,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+
+[node name="Hitbox" parent="." instance=ExtResource("3_qqngv")]
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

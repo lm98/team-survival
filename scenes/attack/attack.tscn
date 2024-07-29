@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b64u3gske8pp8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ulrbc"]
+
+[node name="Attack" type="Area2D"]
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+
+[node name="AttackAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ulrbc")

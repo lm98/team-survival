@@ -28,5 +28,5 @@ func _physics_process(_delta):
 func _on_health_component_health_depleted():
 	queue_free()
 
-func _on_hitbox_body_entered(body):
-	health_component.take_damage(10)
+func take_damage(amount: float):
+	health_component.take_damage(amount)
