@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://l55klmwpilo"]
+
+[ext_resource type="Texture2D" uid="uid://gxvfcp0eit46" path="res://assets/attacks/DoubleSlash.png" id="1_i5adx"]
+[ext_resource type="Script" path="res://scripts/attack/double_slash.gd" id="1_uh8bp"]
+[ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="2_uddoh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk7an"]
+atlas = ExtResource("1_i5adx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy0e4"]
+atlas = ExtResource("1_i5adx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ybvu"]
+atlas = ExtResource("1_i5adx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfqr8"]
+atlas = ExtResource("1_i5adx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vbm0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk7an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ybvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfqr8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_msbwv"]
+radius = 22.0
+
+[node name="DoubleSlash" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_uh8bp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vbm0q")
+frame = 2
+frame_progress = 0.652744
+
+[node name="Hitbox" parent="." instance=ExtResource("2_uddoh")]
+visible = true
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_msbwv")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="Hitbox"]

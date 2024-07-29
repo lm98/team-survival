@@ -78,6 +78,8 @@ shape = SubResource("RectangleShape2D_bqweg")
 position = Vector2(0, -8)
 
 [node name="HurtBox" parent="." instance=ExtResource("4_xj2yw")]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("CircleShape2D_6yls6")
