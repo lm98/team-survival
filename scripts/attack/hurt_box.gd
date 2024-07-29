@@ -1,7 +1,7 @@
 class_name HurtBox extends Area2D
 
 func _init():
-	collision_layer = 0
+	collision_layer = 3
 	collision_mask = 2
 
 func _on_area_entered(hitbox: HitBox):

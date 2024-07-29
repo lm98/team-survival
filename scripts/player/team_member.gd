@@ -2,6 +2,7 @@ class_name TeamMember extends CharacterBody2D
 
 signal member_died(member: TeamMember)
 @export var speed: int = 50
+@export var attack_res: Resource
 @onready var click_position: Vector2 = global_position
 @onready var target_position: Vector2 = global_position
 @onready var health_component = $HealthComponent
@@ -24,3 +25,12 @@ func move_to_target(target: Vector2):
 func _on_health_component_health_depleted():
 	member_died.emit(self)
 	queue_free()
+
+func _on_attack_range_area_entered(area: HurtBox):
+	if area == null:
+		return
+	
+	print("enemy detected")
+	var attack = attack_res.instantiate()
+	add_child(attack)
+	attack.global_position = area.global_position
