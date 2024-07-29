@@ -1,28 +1,29 @@
-[gd_scene load_steps=14 format=3 uid="uid://guywc3twavcq"]
+[gd_scene load_steps=16 format=3 uid="uid://guywc3twavcq"]
 
-[ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_1abfy"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="2_imqb6"]
-[ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_sfwla"]
-[ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hitbox.tscn" id="4_avwac"]
+[ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_32owt"]
+[ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_ndwat"]
+[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_274eg"]
+[ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="4_yii0h"]
+[ext_resource type="PackedScene" uid="uid://bm7fkhs8ftvdl" path="res://scenes/attack/hurt_box.tscn" id="5_qurko"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c7gr"]
-atlas = ExtResource("2_sfwla")
+atlas = ExtResource("2_ndwat")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5lo0"]
-atlas = ExtResource("2_sfwla")
+atlas = ExtResource("2_ndwat")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cl5i0"]
-atlas = ExtResource("2_sfwla")
+atlas = ExtResource("2_ndwat")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r55h1"]
-atlas = ExtResource("2_sfwla")
+atlas = ExtResource("2_ndwat")
 region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kl3bm"]
-atlas = ExtResource("2_sfwla")
+atlas = ExtResource("2_ndwat")
 region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0a15o"]
@@ -56,14 +57,16 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vl7d"]
 size = Vector2(12, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_enxj6"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_a7k3u"]
+radius = 34.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yq32i"]
-radius = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_roekn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hf28e"]
+radius = 32.0156
 
 [node name="Knight" type="CharacterBody2D"]
-collision_layer = 3
-script = ExtResource("1_1abfy")
+script = ExtResource("1_32owt")
 speed = 40
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -77,25 +80,30 @@ visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5vl7d")
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_imqb6")]
+[node name="HealthComponent" parent="." instance=ExtResource("3_274eg")]
 position = Vector2(0, -10)
 health = 50
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="AttackRange" parent="." instance=ExtResource("4_yii0h")]
+script = null
+
+[node name="CollisionShape2D" parent="AttackRange" index="0"]
+shape = SubResource("CircleShape2D_a7k3u")
+
+[node name="HurtBox" parent="." instance=ExtResource("5_qurko")]
 visible = false
-collision_layer = 0
-collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_enxj6")
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_roekn")
 
-[node name="Hitbox" parent="." instance=ExtResource("4_avwac")]
+[node name="TestHitbox" parent="." instance=ExtResource("4_yii0h")]
+visible = true
 
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_yq32i")
+[node name="CollisionShape2D" parent="TestHitbox" index="0"]
+shape = SubResource("CircleShape2D_hf28e")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
-[connection signal="enemy_entered" from="Hitbox" to="." method="_on_hitbox_enemy_entered"]
 
-[editable path="Hitbox"]
+[editable path="AttackRange"]
+[editable path="HurtBox"]
+[editable path="TestHitbox"]

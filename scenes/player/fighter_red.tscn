@@ -58,7 +58,6 @@ size = Vector2(12, 14)
 [sub_resource type="CircleShape2D" id="CircleShape2D_32xss"]
 
 [node name="FighterRed" type="CharacterBody2D"]
-collision_layer = 3
 script = ExtResource("1_xvuox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
