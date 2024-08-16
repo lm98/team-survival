@@ -60,6 +60,7 @@ size = Vector2(130, 130)
 radius = 12.0
 
 [node name="Skeleton" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_cj0da")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8qg7dj87jjfp"]
+
+[ext_resource type="Texture2D" uid="uid://64noywiinjui" path="res://assets/attacks/BigEnergyBall.png" id="1_02xuw"]
+[ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="1_67c55"]
+[ext_resource type="Script" path="res://scripts/attack/energy_ball_big.gd" id="1_wskdl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cs31g"]
+atlas = ExtResource("1_02xuw")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlfwe"]
+atlas = ExtResource("1_02xuw")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl1r6"]
+atlas = ExtResource("1_02xuw")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q3d5"]
+atlas = ExtResource("1_02xuw")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7x31"]
+atlas = ExtResource("1_02xuw")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fi2l"]
+atlas = ExtResource("1_02xuw")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvqg0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cs31g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlfwe")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl1r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q3d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7x31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fi2l")
+}],
+"loop": false,
+"name": &"start",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gs6ne"]
+radius = 14.0159
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k1n32"]
+
+[node name="EnergyBallBig" type="CharacterBody2D"]
+top_level = true
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_wskdl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hvqg0")
+animation = &"flying"
+frame_progress = 0.513314
+
+[node name="Hitbox" parent="." instance=ExtResource("1_67c55")]
+visible = true
+damage = 15.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_gs6ne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_k1n32")
+
+[editable path="Hitbox"]

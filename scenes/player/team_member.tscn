@@ -7,6 +7,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_ctp6b"]
 
 [node name="TeamMember" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_c6x2y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
