@@ -7,3 +7,6 @@ func _ready():
 
 func _on_animated_sprite_2d_animation_finished():
 	queue_free()
+
+func setup_attack(enemy_hurtbox: HurtBox):
+	global_position = enemy_hurtbox.global_position

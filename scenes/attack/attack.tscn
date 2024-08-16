@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://28x2786l5xit"]
+[gd_scene load_steps=3 format=3 uid="uid://28x2786l5xit"]
 
 [ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="3_nu0ot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xoa8m"]
+radius = 13.3333
 
 [node name="Attack" type="Node2D"]
 scale = Vector2(1.5, 1.5)
@@ -9,6 +12,9 @@ scale = Vector2(1.5, 1.5)
 
 [node name="Hitbox" parent="." instance=ExtResource("3_nu0ot")]
 visible = true
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_xoa8m")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 

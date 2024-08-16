@@ -37,23 +37,24 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 6.0
+"speed": 4.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_msbwv"]
 radius = 22.0
 
 [node name="DoubleSlash" type="Node2D"]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_uh8bp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vbm0q")
-frame = 2
-frame_progress = 0.652744
+frame = 3
+frame_progress = 1.0
 
 [node name="Hitbox" parent="." instance=ExtResource("2_uddoh")]
 visible = true
+damage = 10.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_msbwv")

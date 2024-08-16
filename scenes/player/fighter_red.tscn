@@ -1,8 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcce2npwnklhf"]
+[gd_scene load_steps=18 format=3 uid="uid://dcce2npwnklhf"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_xvuox"]
 [ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_3g72j"]
+[ext_resource type="PackedScene" uid="uid://b8qg7dj87jjfp" path="res://scenes/attack/energy_ball_big.tscn" id="2_84tpy"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_c5mrm"]
+[ext_resource type="PackedScene" uid="uid://c8nr2kuexqbte" path="res://scenes/attack/attack_range.tscn" id="5_g35as"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq3jn"]
+atlas = ExtResource("2_3g72j")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0yik"]
+atlas = ExtResource("2_3g72j")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkclw"]
+atlas = ExtResource("2_3g72j")
+region = Rect2(48, 64, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ba867"]
 atlas = ExtResource("2_3g72j")
@@ -26,6 +40,20 @@ region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jpgfh"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq3jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0yik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkclw")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ba867")
@@ -57,7 +85,11 @@ size = Vector2(12, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_32xss"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uyhix"]
+radius = 61.0082
+
 [node name="FighterRed" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_xvuox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -66,6 +98,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pv73l")
 
@@ -74,11 +107,22 @@ position = Vector2(0, -10)
 health = 30
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_32xss")
 
+[node name="AttackRange" parent="." instance=ExtResource("5_g35as")]
+collision_layer = 0
+collision_mask = 4
+attack_res = ExtResource("2_84tpy")
+
+[node name="CollisionShape2D" parent="AttackRange" index="0"]
+shape = SubResource("CircleShape2D_uyhix")
+
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+
+[editable path="AttackRange"]
