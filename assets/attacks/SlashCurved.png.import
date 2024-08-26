@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gxvfcp0eit46"
-path="res://.godot/imported/DoubleSlash.png-ac87cd7da07012b16c2d2776d3370bf6.ctex"
+uid="uid://xlh0pu10kecf"
+path="res://.godot/imported/SlashCurved.png-c264033da57ea79303aedeec0c14ea02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/attacks/DoubleSlash.png"
-dest_files=["res://.godot/imported/DoubleSlash.png-ac87cd7da07012b16c2d2776d3370bf6.ctex"]
+source_file="res://assets/attacks/SlashCurved.png"
+dest_files=["res://.godot/imported/SlashCurved.png-c264033da57ea79303aedeec0c14ea02.ctex"]
 
 [params]
 

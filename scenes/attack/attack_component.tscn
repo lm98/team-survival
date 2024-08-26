@@ -1,12 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://buy6hm5kn22hk"]
 
 [ext_resource type="Script" path="res://scripts/attack/attack_component.gd" id="1_4o4y8"]
-[ext_resource type="PackedScene" uid="uid://c8nr2kuexqbte" path="res://scenes/attack/attack_range.tscn" id="1_mmcso"]
 
-[node name="AttackComponent" type="Node"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_blmsb"]
+radius = 51.0392
+
+[node name="AttackComponent" type="Node2D"]
 script = ExtResource("1_4o4y8")
 
-[node name="AttackRange" parent="." instance=ExtResource("1_mmcso")]
-script = null
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
-[editable path="AttackRange"]
+[node name="AttackRange" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_blmsb")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

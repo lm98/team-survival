@@ -21,4 +21,3 @@ position = Vector2(0, -8)
 [node name="HurtBox" parent="." instance=ExtResource("3_su48n")]
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
-[connection signal="hit" from="HurtBox" to="." method="_on_hurt_box_hit"]

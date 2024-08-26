@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://ocr316xqigh7"]
+
+[ext_resource type="Script" path="res://scripts/attack/slash_circular.gd" id="1_8pd42"]
+[ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="1_o44ig"]
+[ext_resource type="Texture2D" uid="uid://d4bmb1sb4i1ti" path="res://assets/attacks/SlashCircular.png" id="1_rjlxk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6ij5"]
+atlas = ExtResource("1_rjlxk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65ytv"]
+atlas = ExtResource("1_rjlxk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5sox"]
+atlas = ExtResource("1_rjlxk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc4bd"]
+atlas = ExtResource("1_rjlxk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3xx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6ij5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65ytv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5sox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc4bd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xoa8m"]
+radius = 20.0111
+
+[node name="SlashCircular" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_8pd42")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g3xx2")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+
+[node name="Hitbox" parent="." instance=ExtResource("1_o44ig")]
+visible = true
+damage = 70.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_xoa8m")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="Hitbox" method="_on_animated_sprite_2d_animation_finished"]
+
+[editable path="Hitbox"]
