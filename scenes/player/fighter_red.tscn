@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcce2npwnklhf"]
+[gd_scene load_steps=16 format=3 uid="uid://dcce2npwnklhf"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_xvuox"]
 [ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_3g72j"]
 [ext_resource type="PackedScene" uid="uid://b8qg7dj87jjfp" path="res://scenes/attack/energy_ball_big.tscn" id="2_84tpy"]
+[ext_resource type="PackedScene" uid="uid://buy6hm5kn22hk" path="res://scenes/attack/attack_component.tscn" id="2_783gc"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_c5mrm"]
-[ext_resource type="PackedScene" uid="uid://c8nr2kuexqbte" path="res://scenes/attack/attack_range.tscn" id="5_g35as"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nq3jn"]
 atlas = ExtResource("2_3g72j")
@@ -83,11 +83,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv73l"]
 size = Vector2(12, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_32xss"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_uyhix"]
-radius = 61.0082
-
 [node name="FighterRed" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_xvuox")
@@ -106,23 +101,13 @@ shape = SubResource("RectangleShape2D_pv73l")
 position = Vector2(0, -10)
 health = 30
 
-[node name="HurtBox" type="Area2D" parent="."]
-visible = false
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_32xss")
-
-[node name="AttackRange" parent="." instance=ExtResource("5_g35as")]
-collision_layer = 0
-collision_mask = 4
+[node name="AttackComponent" parent="." instance=ExtResource("2_783gc")]
 attack_res = ExtResource("2_84tpy")
+attack_type = 1
 
-[node name="CollisionShape2D" parent="AttackRange" index="0"]
-shape = SubResource("CircleShape2D_uyhix")
+[node name="Timer" parent="AttackComponent" index="0"]
+wait_time = 2.0
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 
-[editable path="AttackRange"]
+[editable path="AttackComponent"]

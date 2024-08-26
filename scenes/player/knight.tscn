@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://guywc3twavcq"]
+[gd_scene load_steps=13 format=3 uid="uid://guywc3twavcq"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_32owt"]
 [ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_ndwat"]
-[ext_resource type="PackedScene" uid="uid://l55klmwpilo" path="res://scenes/attack/double_slash.tscn" id="2_whupb"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_274eg"]
-[ext_resource type="PackedScene" uid="uid://c8nr2kuexqbte" path="res://scenes/attack/attack_range.tscn" id="4_ycem0"]
+[ext_resource type="PackedScene" uid="uid://buy6hm5kn22hk" path="res://scenes/attack/attack_component.tscn" id="4_mm738"]
+[ext_resource type="PackedScene" uid="uid://ocr316xqigh7" path="res://scenes/attack/slash_circular.tscn" id="5_co540"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c7gr"]
 atlas = ExtResource("2_ndwat")
@@ -57,9 +57,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vl7d"]
 size = Vector2(12, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q2j07"]
-radius = 16.0312
-
 [node name="Knight" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_32owt")
@@ -80,14 +77,12 @@ shape = SubResource("RectangleShape2D_5vl7d")
 position = Vector2(0, -10)
 health = 50
 
-[node name="AttackRange" parent="." instance=ExtResource("4_ycem0")]
-collision_layer = 0
-collision_mask = 4
-attack_res = ExtResource("2_whupb")
+[node name="AttackComponent" parent="." instance=ExtResource("4_mm738")]
+attack_res = ExtResource("5_co540")
 
-[node name="CollisionShape2D" parent="AttackRange" index="0"]
-shape = SubResource("CircleShape2D_q2j07")
+[node name="Timer" parent="AttackComponent" index="0"]
+wait_time = 3.0
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 
-[editable path="AttackRange"]
+[editable path="AttackComponent"]

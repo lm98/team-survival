@@ -24,3 +24,6 @@ func move_to_target(target: Vector2):
 func _on_health_component_health_depleted():
 	member_died.emit(self)
 	queue_free()
+
+func take_damage(amount):
+	health_component.take_damage(amount)
