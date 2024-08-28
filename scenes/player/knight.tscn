@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://guywc3twavcq"]
+[gd_scene load_steps=14 format=3 uid="uid://guywc3twavcq"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_32owt"]
 [ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_ndwat"]
@@ -57,6 +57,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vl7d"]
 size = Vector2(12, 14)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmtbt"]
+
 [node name="Knight" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_32owt")
@@ -77,6 +79,17 @@ shape = SubResource("RectangleShape2D_5vl7d")
 position = Vector2(0, -10)
 health = 50
 
+[node name="HurtBox" parent="HealthComponent" index="0"]
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="HealthComponent/HurtBox" index="0"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_qmtbt")
+
+[node name="HealthBar" parent="HealthComponent" index="1"]
+max_value = 50.0
+value = 50.0
+
 [node name="AttackComponent" parent="." instance=ExtResource("4_mm738")]
 attack_res = ExtResource("5_co540")
 
@@ -85,4 +98,6 @@ wait_time = 3.0
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 
+[editable path="HealthComponent"]
+[editable path="HealthComponent/HurtBox"]
 [editable path="AttackComponent"]
