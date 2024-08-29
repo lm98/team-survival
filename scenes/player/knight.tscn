@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_32owt"]
 [ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_ndwat"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_274eg"]
+[ext_resource type="PackedScene" path="res://scenes/util/health_component.tscn" id="3_274eg"]
 [ext_resource type="PackedScene" uid="uid://buy6hm5kn22hk" path="res://scenes/attack/attack_component.tscn" id="4_mm738"]
 [ext_resource type="StyleBox" uid="uid://b3oleic2tlvio" path="res://assets/ui/hb_player_fill.tres" id="4_ouf3r"]
 [ext_resource type="PackedScene" uid="uid://ocr316xqigh7" path="res://scenes/attack/slash_circular.tscn" id="5_co540"]
