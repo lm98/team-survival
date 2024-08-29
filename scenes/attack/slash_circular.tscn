@@ -57,7 +57,7 @@ frame_progress = 1.0
 visible = true
 collision_layer = 2
 collision_mask = 0
-damage = 15.0
+damage = 30.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_xoa8m")

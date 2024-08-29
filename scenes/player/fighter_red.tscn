@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcce2npwnklhf"]
+[gd_scene load_steps=18 format=3 uid="uid://dcce2npwnklhf"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_xvuox"]
 [ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_3g72j"]
 [ext_resource type="PackedScene" uid="uid://b8qg7dj87jjfp" path="res://scenes/attack/energy_ball_big.tscn" id="2_84tpy"]
 [ext_resource type="PackedScene" uid="uid://buy6hm5kn22hk" path="res://scenes/attack/attack_component.tscn" id="2_783gc"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_c5mrm"]
+[ext_resource type="StyleBox" uid="uid://b3oleic2tlvio" path="res://assets/ui/hb_player_fill.tres" id="4_2n1im"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nq3jn"]
 atlas = ExtResource("2_3g72j")
@@ -104,13 +105,17 @@ position = Vector2(0, -10)
 health = 30
 
 [node name="HurtBox" parent="HealthComponent" index="0"]
-collision_mask = 0
+collision_mask = 16
+iframes = 2.0
 
 [node name="CollisionShape2D" parent="HealthComponent/HurtBox" index="0"]
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_2ja48")
 
 [node name="HealthBar" parent="HealthComponent" index="1"]
+offset_top = -3.0
+offset_bottom = 1.0
+theme_override_styles/fill = ExtResource("4_2n1im")
 max_value = 30.0
 value = 30.0
 
