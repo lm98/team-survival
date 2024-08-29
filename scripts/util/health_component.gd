@@ -23,3 +23,6 @@ func take_damage(amount: int):
 func _ready():
 	health_bar.max_value = health
 	health_bar.value = health
+
+func _on_hurt_box_hurt(amount: float) -> void:
+	take_damage(amount)

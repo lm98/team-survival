@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://guywc3twavcq"]
+[gd_scene load_steps=15 format=3 uid="uid://guywc3twavcq"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_32owt"]
 [ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_ndwat"]
 [ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_274eg"]
 [ext_resource type="PackedScene" uid="uid://buy6hm5kn22hk" path="res://scenes/attack/attack_component.tscn" id="4_mm738"]
+[ext_resource type="StyleBox" uid="uid://b3oleic2tlvio" path="res://assets/ui/hb_player_fill.tres" id="4_ouf3r"]
 [ext_resource type="PackedScene" uid="uid://ocr316xqigh7" path="res://scenes/attack/slash_circular.tscn" id="5_co540"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c7gr"]
@@ -80,13 +81,17 @@ position = Vector2(0, -10)
 health = 50
 
 [node name="HurtBox" parent="HealthComponent" index="0"]
-collision_mask = 0
+collision_mask = 16
+iframes = 2.0
 
 [node name="CollisionShape2D" parent="HealthComponent/HurtBox" index="0"]
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_qmtbt")
 
 [node name="HealthBar" parent="HealthComponent" index="1"]
+offset_top = -2.0
+offset_bottom = 2.0
+theme_override_styles/fill = ExtResource("4_ouf3r")
 max_value = 50.0
 value = 50.0
 
