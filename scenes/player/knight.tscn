@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://guywc3twavcq"]
+[gd_scene load_steps=16 format=3 uid="uid://guywc3twavcq"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_32owt"]
 [ext_resource type="Texture2D" uid="uid://dbrxy7k8eijxk" path="res://assets/sprites/Knight.png" id="2_ndwat"]
-[ext_resource type="PackedScene" path="res://scenes/util/health_component.tscn" id="3_274eg"]
+[ext_resource type="PackedScene" uid="uid://cof7rl4antpa8" path="res://scenes/util/health_component.tscn" id="3_274eg"]
 [ext_resource type="PackedScene" uid="uid://buy6hm5kn22hk" path="res://scenes/attack/attack_component.tscn" id="4_mm738"]
 [ext_resource type="StyleBox" uid="uid://b3oleic2tlvio" path="res://assets/ui/hb_player_fill.tres" id="4_ouf3r"]
 [ext_resource type="PackedScene" uid="uid://ocr316xqigh7" path="res://scenes/attack/slash_circular.tscn" id="5_co540"]
+[ext_resource type="AudioStream" uid="uid://dngpuo78t7q02" path="res://assets/music/Hit.wav" id="7_8k8xs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c7gr"]
 atlas = ExtResource("2_ndwat")
@@ -100,6 +101,10 @@ attack_res = ExtResource("5_co540")
 
 [node name="Timer" parent="AttackComponent" index="0"]
 wait_time = 3.0
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8k8xs")
+volume_db = -10.0
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 

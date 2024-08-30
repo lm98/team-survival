@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ocr316xqigh7"]
+[gd_scene load_steps=11 format=3 uid="uid://ocr316xqigh7"]
 
 [ext_resource type="Script" path="res://scripts/attack/slash_circular.gd" id="1_8pd42"]
 [ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="1_o44ig"]
 [ext_resource type="Texture2D" uid="uid://d4bmb1sb4i1ti" path="res://assets/attacks/SlashCircular.png" id="1_rjlxk"]
+[ext_resource type="AudioStream" uid="uid://cktks81if4lww" path="res://assets/music/Hit5.wav" id="4_efvpr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6ij5"]
 atlas = ExtResource("1_rjlxk")
@@ -61,6 +62,12 @@ damage = 30.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_xoa8m")
+
+[node name="AttackSpawnSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_efvpr")
+volume_db = -10.0
+autoplay = true
+area_mask = 2
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="Hitbox" method="_on_animated_sprite_2d_animation_finished"]

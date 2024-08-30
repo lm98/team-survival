@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dox0nvi5tnwm7"]
+[gd_scene load_steps=16 format=3 uid="uid://dox0nvi5tnwm7"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_cj0da"]
 [ext_resource type="Texture2D" uid="uid://coskhxncbsu3w" path="res://assets/sprites/Skeleton.png" id="2_5pmh0"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="2_bhv1t"]
+[ext_resource type="PackedScene" uid="uid://cof7rl4antpa8" path="res://scenes/util/health_component.tscn" id="2_bhv1t"]
 [ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="2_dnrkb"]
 [ext_resource type="StyleBox" uid="uid://tx4ipylgsuyk" path="res://assets/ui/hb_enemy_fill.tres" id="5_hjrv8"]
+[ext_resource type="AudioStream" uid="uid://dngpuo78t7q02" path="res://assets/music/Hit.wav" id="6_6ds4t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gj3y7"]
 radius = 11.0
@@ -101,6 +102,11 @@ shape = SubResource("CircleShape2D_kp084")
 offset_top = -3.0
 offset_bottom = 1.0
 theme_override_styles/fill = ExtResource("5_hjrv8")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_6ds4t")
+volume_db = 5.0
+area_mask = 2
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 

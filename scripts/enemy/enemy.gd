@@ -4,6 +4,7 @@ class_name Enemy extends CharacterBody2D
 @onready var player_team: PlayerTeam = get_node("/root/Game/PlayerTeam")
 @onready var health_component = $HealthComponent
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 
 func _physics_process(_delta):
 	var targets = player_team.get_members()
@@ -30,3 +31,6 @@ func _on_health_component_health_depleted():
 
 func take_damage(amount):
 	health_component.take_damage(amount)
+
+func _on_health_component_damaged(amount: int) -> void:
+	hurt_sound.play()

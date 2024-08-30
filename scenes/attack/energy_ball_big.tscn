@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8qg7dj87jjfp"]
+[gd_scene load_steps=14 format=3 uid="uid://b8qg7dj87jjfp"]
 
 [ext_resource type="Texture2D" uid="uid://64noywiinjui" path="res://assets/attacks/BigEnergyBall.png" id="1_02xuw"]
 [ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="1_67c55"]
 [ext_resource type="Script" path="res://scripts/attack/energy_ball_big.gd" id="1_wskdl"]
+[ext_resource type="AudioStream" uid="uid://b5yjbbc63nffi" path="res://assets/music/Fireball.wav" id="4_12pcs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cs31g"]
 atlas = ExtResource("1_02xuw")
@@ -88,5 +89,11 @@ shape = SubResource("CircleShape2D_gs6ne")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_k1n32")
+
+[node name="AttackSoundSpawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_12pcs")
+volume_db = -10.0
+autoplay = true
+area_mask = 2
 
 [editable path="Hitbox"]

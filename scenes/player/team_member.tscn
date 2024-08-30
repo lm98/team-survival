@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6nfxj6hr8867"]
+[gd_scene load_steps=7 format=3 uid="uid://b6nfxj6hr8867"]
 
 [ext_resource type="Script" path="res://scripts/player/team_member.gd" id="1_c6x2y"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_kj3eh"]
+[ext_resource type="PackedScene" uid="uid://cof7rl4antpa8" path="res://scenes/util/health_component.tscn" id="3_kj3eh"]
 [ext_resource type="PackedScene" uid="uid://bspqrsf7x4l" path="res://scenes/attack/hit_box.tscn" id="3_qqngv"]
+[ext_resource type="AudioStream" uid="uid://dngpuo78t7q02" path="res://assets/music/Hit.wav" id="4_i8qdm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ctp6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ti4v2"]
 
 [node name="TeamMember" type="CharacterBody2D"]
 motion_mode = 1
@@ -14,11 +17,26 @@ script = ExtResource("1_c6x2y")
 sprite_frames = SubResource("SpriteFrames_ctp6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ti4v2")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_kj3eh")]
 position = Vector2(0, -10)
 health = 30
 
+[node name="HurtBox" parent="HealthComponent" index="0"]
+position = Vector2(0, 10)
+
+[node name="HealthBar" parent="HealthComponent" index="1"]
+max_value = 30.0
+value = 30.0
+
 [node name="AttackRange" parent="." instance=ExtResource("3_qqngv")]
 
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_i8qdm")
+volume_db = -10.0
+
+[connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+
+[editable path="HealthComponent"]

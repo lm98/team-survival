@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj6kr4ty7c8f3"]
+[gd_scene load_steps=3 format=3 uid="uid://cof7rl4antpa8"]
 
 [ext_resource type="Script" path="res://scripts/util/health_component.gd" id="1_5jr4s"]
 [ext_resource type="PackedScene" uid="uid://bm7fkhs8ftvdl" path="res://scenes/attack/hurt_box.tscn" id="2_uuc45"]

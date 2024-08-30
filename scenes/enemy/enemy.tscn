@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://umg8v7j1bp4i"]
+[gd_scene load_steps=6 format=3 uid="uid://umg8v7j1bp4i"]
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_yam6n"]
-[ext_resource type="PackedScene" uid="uid://bj6kr4ty7c8f3" path="res://scenes/util/health_component.tscn" id="3_cptos"]
+[ext_resource type="PackedScene" uid="uid://cof7rl4antpa8" path="res://scenes/util/health_component.tscn" id="3_cptos"]
 [ext_resource type="PackedScene" uid="uid://bm7fkhs8ftvdl" path="res://scenes/attack/hurt_box.tscn" id="3_su48n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4n6vp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yuea"]
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_yam6n")
@@ -14,10 +16,14 @@ sprite_frames = SubResource("SpriteFrames_4n6vp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_6yuea")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_cptos")]
 position = Vector2(0, -8)
 
 [node name="HurtBox" parent="." instance=ExtResource("3_su48n")]
 
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="damaged" from="HealthComponent" to="." method="_on_health_component_damaged"]
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

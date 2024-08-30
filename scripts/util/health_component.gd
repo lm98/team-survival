@@ -1,6 +1,7 @@
 @tool class_name HealthComponent extends Node2D
 
 signal health_depleted
+signal damaged(amount: int)
 @export var health: int = 100
 @onready var health_bar = $HealthBar
 
@@ -24,5 +25,6 @@ func _ready():
 	health_bar.max_value = health
 	health_bar.value = health
 
-func _on_hurt_box_hurt(amount: float) -> void:
+func _on_hurt_box_hurt(amount: int) -> void:
 	take_damage(amount)
+	damaged.emit(amount)

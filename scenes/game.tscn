@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://cg4hkp5e5mkx8"]
+[gd_scene load_steps=10 format=4 uid="uid://cg4hkp5e5mkx8"]
 
 [ext_resource type="PackedScene" uid="uid://dnm0gyvqhxihe" path="res://scenes/player/player_team.tscn" id="1_n5eul"]
 [ext_resource type="PackedScene" uid="uid://dox0nvi5tnwm7" path="res://scenes/enemy/skeleton.tscn" id="3_0e35p"]
 [ext_resource type="PackedScene" uid="uid://danomup8bjwpg" path="res://scenes/enemy/enemy_spawner.tscn" id="3_fpdir"]
 [ext_resource type="Texture2D" uid="uid://cfdmy3n0v8n03" path="res://assets/scenery/TilesetFloor.png" id="5_orsff"]
 [ext_resource type="Script" path="res://scripts/enemy/spawn_info.gd" id="5_rwukp"]
+[ext_resource type="AudioStream" uid="uid://dbvwl1eiupeps" path="res://assets/music/2 - The Cave.ogg" id="6_uluyg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt5fv"]
 texture = ExtResource("5_orsff")
@@ -493,5 +494,10 @@ position = Vector2(277, 211)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_fpdir")]
 spawn_infos = Array[ExtResource("5_rwukp")]([SubResource("Resource_u3ee6")])
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_uluyg")
+volume_db = -5.0
+autoplay = true
 
 [editable path="EnemySpawner"]
