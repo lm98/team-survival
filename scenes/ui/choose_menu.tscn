@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://48xt1cdqrgao"]
+
+[ext_resource type="Script" path="res://scripts/ui/choose_menu.gd" id="1_107v2"]
+[ext_resource type="FontFile" uid="uid://bslx2ods0bxu2" path="res://assets/ui/fonts/NormalFont.ttf" id="1_k00nr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1vu2a"]
+
+[node name="ChooseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_107v2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1vu2a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Choice1" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k00nr")
+text = "Q:"
+
+[node name="Choice2" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k00nr")
+text = "W:"
+
+[node name="Choice3" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k00nr")
+text = "E:"

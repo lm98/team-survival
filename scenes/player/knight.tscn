@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ocr316xqigh7" path="res://scenes/attack/slash_circular.tscn" id="5_co540"]
 [ext_resource type="AudioStream" uid="uid://dngpuo78t7q02" path="res://assets/music/Hit.wav" id="7_8k8xs"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmtbt"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c7gr"]
 atlas = ExtResource("2_ndwat")
 region = Rect2(0, 0, 16, 16)
@@ -59,23 +61,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vl7d"]
 size = Vector2(12, 14)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qmtbt"]
-
 [node name="Knight" type="CharacterBody2D"]
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_32owt")
 speed = 40
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_0a15o")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.195528
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_5vl7d")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_274eg")]
 position = Vector2(0, -10)
@@ -95,6 +85,17 @@ offset_bottom = 2.0
 theme_override_styles/fill = ExtResource("4_ouf3r")
 max_value = 50.0
 value = 50.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0a15o")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.195528
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5vl7d")
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_mm738")]
 attack_res = ExtResource("5_co540")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bcbxcmgwp8q43" path="res://assets/sprites/FighterRed.png" id="2_3g72j"]
 [ext_resource type="PackedScene" uid="uid://b8qg7dj87jjfp" path="res://scenes/attack/energy_ball_big.tscn" id="2_84tpy"]
 [ext_resource type="PackedScene" uid="uid://buy6hm5kn22hk" path="res://scenes/attack/attack_component.tscn" id="2_783gc"]
-[ext_resource type="PackedScene" path="res://scenes/util/health_component.tscn" id="2_l7djs"]
+[ext_resource type="PackedScene" uid="uid://cof7rl4antpa8" path="res://scenes/util/health_component.tscn" id="2_l7djs"]
 [ext_resource type="StyleBox" uid="uid://b3oleic2tlvio" path="res://assets/ui/hb_player_fill.tres" id="4_2n1im"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nq3jn"]
@@ -84,13 +84,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvyjk"]
 
 [node name="FighterRed" type="CharacterBody2D"]
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_xvuox")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_jpgfh")
-animation = &"idle"
-autoplay = "idle"
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_l7djs")]
 
@@ -101,6 +97,11 @@ collision_mask = 16
 offset_top = -12.0
 offset_bottom = -8.0
 theme_override_styles/fill = ExtResource("4_2n1im")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jpgfh")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_783gc")]
 attack_res = ExtResource("2_84tpy")

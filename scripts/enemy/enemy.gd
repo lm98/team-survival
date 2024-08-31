@@ -27,6 +27,10 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _on_health_component_health_depleted():
+	const DROP = preload("res://scenes/pickup/coin.tscn")
+	var coin = DROP.instantiate()
+	coin.global_position = global_position
+	get_node("/root/Game").add_child(coin)
 	queue_free()
 
 func take_damage(amount):
