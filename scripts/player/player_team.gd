@@ -9,32 +9,41 @@ const team_members = {
 }
 
 var members: Dictionary = {}
+var spawn_map: Dictionary = {}
 
 func get_members() -> Dictionary:
 	return members.duplicate()
 
 func add_member(member: TeamMember) -> bool:
 	if members.size() < spawn_points.size():
-		members[members.size()] = member
+		var sp: Node2D = spawn_points[members.size()]
+		members[sp] = member
 		return true
 	else:
 		return false
 
-func remove_member_by_index(index: int) -> bool:
-	return members.erase(index)
+func remove_member_by_spawn_pont(sp: Node2D) -> bool:
+	spawn_map[sp] = false
+	return members.erase(sp)
 
 func remove_member(member: TeamMember):
-	var index = members.find_key(member)
-	if index != null:
-		remove_member_by_index(index)
+	var sp = members.find_key(member)
+	if sp != null:
+		remove_member_by_spawn_pont(sp)
 
 func spawn_new_member(member_res: Resource, spawn_point: Node2D):
-	if members.size >= spawn_points.size(): return
+	if members.size() >= spawn_points.size(): return
 	var member = member_res.instantiate()
-	member.global_position = spawn_point.global_position
+	member.global_position = spawn_point.position
 	member.connect("member_died", on_member_death)
+	spawn_map[spawn_point] = true
 	add_child(member)
 	add_member(member)
+
+func spawn(member_res: Resource):
+	var sp = spawn_map.find_key(false)
+	if sp == null: return
+	spawn_new_member(member_res, sp)
 
 func create_test_team():
 	var member_prefabs = team_members.values()
@@ -44,7 +53,10 @@ func create_test_team():
 		spawn_new_member(member, sp)
 
 func _ready():
-	create_test_team()
+	for sp in spawn_points:
+		spawn_map[sp] = false
+	#create_test_team()
+	spawn_new_member(team_members.values().pick_random(), spawn_points[0])
 
 func _physics_process(_delta: float):
 	if Input.is_action_just_pressed("left_mouse_click"):
@@ -63,3 +75,4 @@ func on_member_death(member: TeamMember):
 	
 func on_chest_open(member: String) -> void:
 	print("Adding " + member)
+	spawn(team_members[member])

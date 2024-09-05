@@ -74,6 +74,7 @@ position = Vector2(0, -8)
 
 [node name="HurtBox" parent="HealthComponent" index="0"]
 collision_layer = 4
+iframes = 1.0
 
 [node name="CollisionShape2D" parent="HealthComponent/HurtBox" index="0"]
 position = Vector2(0, 8)
