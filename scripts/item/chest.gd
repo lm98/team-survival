@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	var player_present: bool = get_overlapping_bodies().size() > 0
 	
 	if player_present and pm.points >= price_to_open and Input.is_action_just_pressed("open_chest"):
-		pt.on_chest_open(content)
+		pt.on_chest_open(content, global_position)
 		animated_sprite_2d.play("open")
 
 func _on_animated_sprite_2d_animation_finished() -> void:

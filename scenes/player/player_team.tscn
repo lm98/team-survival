@@ -2,27 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/player/player_team.gd" id="1_0yh88"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ju3rd"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_clgqi"]
+radius = 5.09902
 
-[node name="PlayerTeam" type="Area2D" node_paths=PackedStringArray("spawn_points")]
+[node name="PlayerTeam" type="Area2D"]
 script = ExtResource("1_0yh88")
-spawn_points = [NodePath("SpawningShape/SpawnPoint-1"), NodePath("SpawningShape/SpawnPoint-2"), NodePath("SpawningShape/SpawnPoint-3"), NodePath("SpawningShape/SpawnPoint-4"), NodePath("SpawningShape/SpawnPoint-5")]
 
-[node name="SpawningShape" type="CollisionShape2D" parent="."]
-unique_name_in_owner = true
-scale = Vector2(2.025, 2.025)
-shape = SubResource("CircleShape2D_ju3rd")
-
-[node name="SpawnPoint-1" type="Node2D" parent="SpawningShape"]
-
-[node name="SpawnPoint-2" type="Node2D" parent="SpawningShape"]
-position = Vector2(10, 0)
-
-[node name="SpawnPoint-3" type="Node2D" parent="SpawningShape"]
-position = Vector2(0, 10)
-
-[node name="SpawnPoint-4" type="Node2D" parent="SpawningShape"]
-position = Vector2(-10, 0)
-
-[node name="SpawnPoint-5" type="Node2D" parent="SpawningShape"]
-position = Vector2(0, -10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_clgqi")
+debug_color = Color(0.911495, 0.186662, 0.573124, 0.42)

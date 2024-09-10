@@ -10,7 +10,7 @@ func _physics_process(_delta):
 	var targets = player_team.get_members()
 	var current_target = Vector2.ZERO
 	var shortest_distance = INF
-	for t in targets.values():
+	for t in targets:
 		var distance = global_position.distance_to(t.global_position)
 		if distance < shortest_distance:
 			shortest_distance = distance

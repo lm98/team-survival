@@ -492,7 +492,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAPAAwAAAAAAAEAAAAPAAwAAAAAAAIAAAAPAAw
 tile_set = SubResource("TileSet_hb1fn")
 
 [node name="PlayerTeam" parent="." instance=ExtResource("1_n5eul")]
-position = Vector2(277, 204)
+position = Vector2(279, 228)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_fpdir")]
 spawn_infos = Array[ExtResource("5_rwukp")]([SubResource("Resource_u3ee6")])
