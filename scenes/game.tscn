@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://cg4hkp5e5mkx8"]
+[gd_scene load_steps=16 format=4 uid="uid://cg4hkp5e5mkx8"]
 
-[ext_resource type="PackedScene" uid="uid://cnmt8c1qg0fui" path="res://scenes/util/progression_manager.tscn" id="1_flsox"]
+[ext_resource type="PackedScene" path="res://scenes/util/progression_manager.tscn" id="1_flsox"]
 [ext_resource type="PackedScene" uid="uid://dnm0gyvqhxihe" path="res://scenes/player/player_team.tscn" id="1_n5eul"]
 [ext_resource type="PackedScene" uid="uid://dox0nvi5tnwm7" path="res://scenes/enemy/skeleton.tscn" id="3_0e35p"]
 [ext_resource type="PackedScene" uid="uid://danomup8bjwpg" path="res://scenes/enemy/enemy_spawner.tscn" id="3_fpdir"]
+[ext_resource type="Script" path="res://scripts/player/player_character.gd" id="4_wcdb0"]
+[ext_resource type="Resource" uid="uid://nh1vfjkvc5tv" path="res://resources/fighter_red_character.tres" id="5_c3g1x"]
 [ext_resource type="Texture2D" uid="uid://cfdmy3n0v8n03" path="res://assets/scenery/TilesetFloor.png" id="5_orsff"]
 [ext_resource type="Script" path="res://scripts/enemy/spawn_info.gd" id="5_rwukp"]
+[ext_resource type="Resource" uid="uid://cuamit3swytqh" path="res://resources/knight_character.tres" id="6_ecyjt"]
 [ext_resource type="AudioStream" uid="uid://dbvwl1eiupeps" path="res://assets/music/2 - The Cave.ogg" id="6_uluyg"]
 [ext_resource type="PackedScene" uid="uid://dqtxwbcjpp6iu" path="res://scenes/pickup/coin.tscn" id="7_l505k"]
 [ext_resource type="PackedScene" uid="uid://vnndqvkga1eb" path="res://scenes/item/chest.tscn" id="10_ell8b"]
@@ -493,6 +496,7 @@ tile_set = SubResource("TileSet_hb1fn")
 
 [node name="PlayerTeam" parent="." instance=ExtResource("1_n5eul")]
 position = Vector2(279, 228)
+team_members = Array[ExtResource("4_wcdb0")]([ExtResource("5_c3g1x"), ExtResource("6_ecyjt")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_fpdir")]
 spawn_infos = Array[ExtResource("5_rwukp")]([SubResource("Resource_u3ee6")])
@@ -507,22 +511,22 @@ position = Vector2(276, 201)
 
 [node name="Chest" parent="." instance=ExtResource("10_ell8b")]
 position = Vector2(330, 225)
-chest_type = 0
+content = ExtResource("6_ecyjt")
 
 [node name="Chest2" parent="." instance=ExtResource("10_ell8b")]
 position = Vector2(141, 494)
-chest_type = 0
+content = ExtResource("6_ecyjt")
 
 [node name="Chest3" parent="." instance=ExtResource("10_ell8b")]
 position = Vector2(912, 104)
-chest_type = 0
+content = ExtResource("5_c3g1x")
 
 [node name="Chest4" parent="." instance=ExtResource("10_ell8b")]
 position = Vector2(785, 527)
-chest_type = 0
+content = ExtResource("5_c3g1x")
 
 [node name="Chest5" parent="." instance=ExtResource("10_ell8b")]
 position = Vector2(64, 78)
-chest_type = 0
+content = ExtResource("5_c3g1x")
 
 [editable path="EnemySpawner"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerCharacter" load_steps=3 format=3 uid="uid://cuamit3swytqh"]
+
+[ext_resource type="Script" path="res://scripts/player/player_character.gd" id="1_0r5ir"]
+[ext_resource type="PackedScene" uid="uid://guywc3twavcq" path="res://scenes/player/knight.tscn" id="1_70dhu"]
+
+[resource]
+script = ExtResource("1_0r5ir")
+name = "Knight"
+scene = ExtResource("1_70dhu")
